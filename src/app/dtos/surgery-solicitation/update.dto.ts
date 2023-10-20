@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsOptional, IsString, MaxLength } from 'class-validator';
+import {
+  IsDate,
+  IsDateString,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 import { DEFAULT_MAX_LENGTH } from 'src/domain/constants/common.constant';
 import { IUpdateSurgerySolicitationInput } from 'src/domain/interfaces/surgery-solicitation/update.interface';
 
@@ -38,8 +44,8 @@ export class UpdateSurgerySolicitationDto
 
   @IsOptional()
   @ApiProperty()
-  @IsDate()
-  surgery_date: Date;
+  @IsDateString()
+  surgery_date?: Date;
 
   @IsOptional()
   @ApiProperty()

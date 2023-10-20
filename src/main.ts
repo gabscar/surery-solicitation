@@ -21,7 +21,11 @@ async function bootstrap() {
   );
   app.setGlobalPrefix(`api/${process.env.API_VERSION}`);
   app.use(helmet());
-  app.enableCors();
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   const config = new DocumentBuilder()
     .setTitle('Documentation with Swagger')
     .setDescription('API Description')

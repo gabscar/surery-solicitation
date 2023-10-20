@@ -28,7 +28,10 @@ export class UpdateSurgerySolicitationUseCase
 
     const user = await this.updateUserEntityService.execute({
       where: { id: id },
-      params,
+      params: {
+        ...params,
+        surgery_date: new Date(params.surgery_date) || undefined,
+      },
     });
 
     if (user.isLeft()) {
@@ -43,7 +46,7 @@ export class UpdateSurgerySolicitationUseCase
     params: IUpdateSurgerySolicitationInput,
   ): Promise<void> {
     await this.validateId(id);
-    await this.validateCode(id, params.code);
+    if (params.code) await this.validateCode(id, params.code);
   }
 
   private async validateId(id: string) {
@@ -57,15 +60,15 @@ export class UpdateSurgerySolicitationUseCase
     }
   }
 
-  private async validateCode(id: string, email: string): Promise<void> {
-    if (!email) return;
+  private async validateCode(id: string, code: string): Promise<void> {
+    if (!code) return;
 
-    const emailExists = await this.findByUserEntityService.execute({
+    const codeExists = await this.findByUserEntityService.execute({
       field: 'code',
-      value: id,
+      value: code,
     });
 
-    if (emailExists.isRight()) {
+    if (codeExists.isRight() && codeExists.value.id !== id) {
       throw SurgerySolicitationErrors.alreadyExists();
     }
   }

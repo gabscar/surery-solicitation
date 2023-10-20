@@ -7,7 +7,7 @@ import {
   createSurgerySolicitationsMocks,
 } from 'test/mocks/factories/surgery-solicitation.factory.mock';
 
-describe('update user use case -  when UpdateUserUseCase is executed', () => {
+describe('update user use case -  when UpdateSurgerySolicitationUseCase is executed', () => {
   let usedMocks: ICreateSurgerySolicitationMocks;
   let sut: UpdateSurgerySolicitationUseCase;
   const surgerySolicitation = SurgeryEntityMock.create();

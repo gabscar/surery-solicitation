@@ -32,8 +32,10 @@ export class CreateSurgerySolicitationUseCase
     if (surgerySolicitationExists.isRight()) {
       throw SurgerySolicitationErrors.alreadyExists();
     }
-
-    const surgery = await this.createUserEntityService.execute(params);
+    const surgery = await this.createUserEntityService.execute({
+      ...params,
+      surgery_date: new Date(params.surgery_date),
+    });
 
     if (surgery.isLeft()) {
       throw surgery.value;

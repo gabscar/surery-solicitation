@@ -6,7 +6,7 @@ import {
   createSurgerySolicitationsMocks,
 } from 'test/mocks/factories/surgery-solicitation.factory.mock';
 
-describe('create user use case - when CreateUserUseCase is executed', () => {
+describe('create user use case - when CreateSurgerySolicitationUseCase is executed', () => {
   let userMocks: ICreateSurgerySolicitationMocks;
   let sut: CreateSurgerySolicitationUseCase;
 
