@@ -30,7 +30,9 @@ export class UpdateSurgerySolicitationUseCase
       where: { id: id },
       params: {
         ...params,
-        surgery_date: new Date(params.surgery_date) || undefined,
+        surgery_date: params.surgery_date
+          ? new Date(params.surgery_date)
+          : undefined,
       },
     });
 

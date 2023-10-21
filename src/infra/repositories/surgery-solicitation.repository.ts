@@ -34,7 +34,7 @@ export class SurgerySolicitationRepositoryDatabase
   }
 
   async delete(id: string): Promise<void> {
-    await this.surgerySolicitationDatabaseService.delete({ id });
+    await this.surgerySolicitationDatabaseService.softDelete({ id });
   }
 
   async findAll(
