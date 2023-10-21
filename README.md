@@ -25,11 +25,17 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Documentation
+ - This project use swagger, and you can find a insomnia collection in folder named "collection"
 
 ## Installation
 
 ```bash
 $ yarn install
+
+-> To run database
+
+$ docer compose up 
 ```
 
 ## Running the app
@@ -57,7 +63,11 @@ $ yarn run test:e2e
 # test coverage
 $ yarn run test:cov
 ```
+## with docker 
 
+```bash
+$ docker build -t surgery-solicitation-api .
+```
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
